@@ -63,8 +63,8 @@ params:
               url: https://scholarship.miami.edu/esploro/outputs/doctoral/Assessing-Threats-from-Global-Warming-and/991032489071302976?institution=01UOML_INST
             #- name: Data
               #url: Data/
-            - name: TidyTuesday
-              url: TidyTuesday/
+            #- name: TidyTuesday
+              #url: TidyTuesday/
 
     socialIcons:
         - name: Email
