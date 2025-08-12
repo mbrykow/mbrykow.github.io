@@ -58,7 +58,7 @@ params:
           imageHeight: 160
           buttons:
             - name: CV
-              url: "RykowskiMB_CV.docx"
+              url: "RykowskiMB_CV.pdf"
             - name: Dissertation
               url: https://scholarship.miami.edu/esploro/outputs/doctoral/Assessing-Threats-from-Global-Warming-and/991032489071302976?institution=01UOML_INST
             #- name: Data
