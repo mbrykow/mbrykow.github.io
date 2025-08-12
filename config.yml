@@ -12,21 +12,18 @@ taxonomies:
 
 menu:
     main:
+        - name: CV
+          url: CV/
+          weight: 5 
         - name: Dissertation
           url: Dissertation/
           weight: 5 
-        - name: Papers
-          url: papers/
-          weight: 2
-        - name: Courses
-          url: courses/
-          weight: 3
-        - name: Data
-          url: data/
-          weight: 4 
-        - name: Blog
-          url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
-          weight: 6
+        #- name: Data
+          #url: Data/
+          #weight: 4 
+        - name: TidyTuesday
+          url: TidyTuesday/
+          weight: 3 
 
 params:
     description: "This website hosts Marissa B. Rykowski's dissertation, data, curriculum vitae, and contact information."
@@ -44,7 +41,7 @@ params:
     ShowBreadCrumbs: false
     ShowCodeCopyButtons: true
     ShowAllPagesInArchive: false
-    MainSections: ["Dissertation","courses","papers","data"]
+    MainSections: ["CV","Dissertation","Data","TidyTuesday"]
     ShowToc: false
     disableScrollToTop: true
     TocOpen: true
@@ -60,44 +57,24 @@ params:
           imageWidth: 160
           imageHeight: 160
           buttons:
+            - name: CV
+              url: CV/
             - name: Dissertation
-              url: Dissertation/
-            - name: Papers
-              url: papers/
-            - name: Data
-              url: data/
-            - name: Courses
-              url: courses/
-            - name: Tags
-              url: tags/
-            - name: Archive
-              url: archive/
-            - name: Blog
-              url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
+              url: https://scholarship.miami.edu/esploro/outputs/doctoral/Assessing-Threats-from-Global-Warming-and/991032489071302976?institution=01UOML_INST
+            #- name: Data
+              #url: Data/
+            - name: TidyTuesday
+              url: TidyTuesday/
 
     socialIcons:
-        - name: CV
-          url: cv.pdf
         - name: Email
-          url: mailto:igelfeld@regensburg.edu
-        - name: Zoom
-          url: https://www.zoom.us/my/igelfeld
-        - name: Location
-          url: location/
-        - name: Office Hours
-          url: officehours/
-        - name: Google Scholar
-          url: https://scholar.google.com/citations?user=cL23w-4AAAAJ
+          url: mailto:mbrykow@gmail.com
+        #- name: Google Scholar
+          #url:
+        - name: LinkedIn
+          url: https://www.linkedin.com/in/marissa-rykowski-015167122/
         - name: GitHub
-          url: https://github.com/pmichaillat
-        - name: Substack
-          url: https://pmichaillat.substack.com
-        - name: YouTube
-          url: https://www.youtube.com/@pmichaillat
-        - name: Twitter
-          url: https://x.com/pmichaillat
-        - name: Bluesky
-          url: https://bsky.app/profile/pmichaillat.bsky.social
+          url: https://github.com/mbrykow
 
     assets:
         disableScrollBarStyle: true
