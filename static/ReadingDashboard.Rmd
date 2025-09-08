@@ -1,0 +1,219 @@
+---
+title: "Reading Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    social: menu
+    source_code: embed
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(lubridate)
+library(gt)
+
+Colors <- palette.colors(palette = "Set 2")
+
+books <- read.csv("goodreads_library_export.csv")
+
+books <- select(books,Title,Author,My.Rating,Average.Rating,Number.of.Pages,Original.Publication.Year,Date.Read,Bookshelves)
+books$Date.Read <- as.Date(books$Date.Read,format="%Y/%m/%d")
+
+```
+
+Sidebar {.sidebar}
+=======================================================================
+
+### Summary
+
+This is an example of a static dashboard I created in RMarkdown, using my downloaded reading data from  [Goodreads](https://www.goodreads.com). Last updated `r Sys.Date()`.
+
+Currently reading:
+![](Oathbound.jpg){#id .class width=200 height=280px}
+
+
+2025
+=======================================================================
+
+Row
+-----------------------------------------------------------------------
+
+### Books read {.value-box}
+
+```{r}
+Books2025 <- books %>% 
+  filter(!grepl("to-read", Bookshelves)) %>%
+  filter(year(Date.Read) == 2025)
+
+NumBooks2025 <- Books2025 %>%
+  count()
+NumBooks2025 <- NumBooks2025$n
+
+renderValueBox({
+  valueBox(
+    value = NumBooks2025,
+    icon = "fa-book",
+    color = Colors[1]
+  )
+})
+```
+
+### Pages read {.value-box}
+
+```{r}
+NumPages2025 <- sum(Books2025$Number.of.Pages)
+
+renderValueBox({
+  valueBox(
+    value = NumPages2025,
+    icon = "fa-file-text",
+    color = Colors[2]
+  )
+})
+```
+
+### Average rating {.value-box}
+
+```{r}
+AvgRate2025 <- Books2025 %>%
+  summarise(AvgRating = mean(My.Rating))
+AvgRate2025 <- AvgRate2025$AvgRating
+
+renderValueBox({
+  valueBox(
+    value = round(AvgRate2025,2),
+    icon = "fa-star",
+    color = Colors[3]
+  )
+})
+```
+Row
+-----------------------------------------------------------------------
+
+### Number of books per month
+
+```{r}
+Books2025 %>%
+  mutate(Month = month(Date.Read,label=T,abbr=T)) %>%
+  group_by(Month) %>%
+  count() %>%
+  ggplot(aes(x=Month,y=n,group=1)) +
+    geom_line(color=Colors[1]) +
+    labs(y="Books Read") +
+    theme_classic()
+```
+
+### Number of pages per month
+
+```{r}
+Books2025 %>%
+  mutate(Month = month(Date.Read,label=T,abbr=T)) %>%
+  group_by(Month) %>%
+  summarise(Pages = sum(Number.of.Pages)) %>%
+  ggplot(aes(x=Month,y=Pages,group=1)) +
+    geom_line(color=Colors[2]) +
+    labs(y="Pages Read") +
+    theme_classic()
+```
+
+
+Lifetime
+=======================================================================
+
+Row
+-----------------------------------------------------------------------
+
+### Books read {.value-box}
+
+```{r}
+Books <- books %>% 
+  filter(!grepl("to-read", Bookshelves),
+         My.Rating != 0)
+
+NumBooks <- Books %>% 
+  count()
+NumBooks <- NumBooks$n
+
+renderValueBox({
+  valueBox(
+    value = NumBooks,
+    icon = "fa-book",
+    color = Colors[1]
+  )
+})
+```
+
+### Pages read {.value-box}
+
+```{r}
+NumPages <- sum(Books$Number.of.Pages)
+
+renderValueBox({
+  valueBox(
+    value = NumPages,
+    icon = "fa-file-text",
+    color = Colors[2]
+  )
+})
+```
+
+### Average rating {.value-box}
+
+```{r}
+AvgRate <- Books %>%
+  summarise(AvgRating = mean(My.Rating))
+AvgRate <- AvgRate$AvgRating
+
+renderValueBox({
+  valueBox(
+    value = round(AvgRate,2),
+    icon = "fa-star",
+    color = Colors[3]
+  )
+})
+```
+Row
+-----------------------------------------------------------------------
+
+### Number of books per month
+
+```{r}
+NoDateBook <- books %>%
+  filter(is.na(Date.Read)) %>%
+  filter(Bookshelves == "") %>%
+  count()
+NoDateBook <- NoDateBook$n
+
+Books %>%
+  mutate(Year = year(Date.Read)) %>%
+  group_by(Year) %>%
+  count() %>%
+  ggplot(aes(x=Year,y=n,group=1)) +
+    geom_line(color=Colors[1]) +
+    labs(y="Books Read") +
+    theme_classic() +
+    annotate("text",x=2006,y=55,label=paste("Note: ",NoDateBook," books have no date recorded",sep=""),size=2.5)
+```
+
+### Number of pages per month
+
+```{r}
+NoDatePage <- books %>%
+  filter(is.na(Date.Read)) %>%
+  filter(Bookshelves == "") %>%
+  summarise(Page = sum(Number.of.Pages))
+NoDatePage <- NoDatePage$Page
+
+Books %>%
+  mutate(Year = year(Date.Read)) %>%
+  group_by(Year) %>%
+  summarise(Page = sum(Number.of.Pages)) %>%
+  ggplot(aes(x=Year,y=Page,group=1)) +
+    geom_line(color=Colors[2]) +
+    labs(y="Pages Read") +
+    theme_classic() +
+    annotate("text",x=2006.5,y=23000,label=paste("Note: ",NoDatePage," pages have no date recorded",sep=""),size=2.5)
+```
+
