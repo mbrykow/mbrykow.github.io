@@ -51,13 +51,11 @@ NumBooks2025 <- Books2025 %>%
   count()
 NumBooks2025 <- NumBooks2025$n
 
-renderValueBox({
-  valueBox(
-    value = NumBooks2025,
-    icon = "fa-book",
-    color = Colors[1]
-  )
-})
+valueBox(
+  value = NumBooks2025,
+  icon = "fa-book",
+  color = Colors[1]
+)
 ```
 
 ### Pages read {.value-box}
@@ -65,13 +63,12 @@ renderValueBox({
 ```{r}
 NumPages2025 <- sum(Books2025$Number.of.Pages)
 
-renderValueBox({
-  valueBox(
-    value = NumPages2025,
-    icon = "fa-file-text",
-    color = Colors[2]
-  )
-})
+valueBox(
+  value = NumPages2025,
+  icon = "fa-file-text",
+  color = Colors[2]
+)
+
 ```
 
 ### Average rating {.value-box}
@@ -81,13 +78,12 @@ AvgRate2025 <- Books2025 %>%
   summarise(AvgRating = mean(My.Rating))
 AvgRate2025 <- AvgRate2025$AvgRating
 
-renderValueBox({
-  valueBox(
-    value = round(AvgRate2025,2),
-    icon = "fa-star",
-    color = Colors[3]
-  )
-})
+valueBox(
+  value = round(AvgRate2025,2),
+  icon = "fa-star",
+  color = Colors[3]
+)
+
 ```
 Row
 -----------------------------------------------------------------------
@@ -136,13 +132,12 @@ NumBooks <- Books %>%
   count()
 NumBooks <- NumBooks$n
 
-renderValueBox({
-  valueBox(
-    value = NumBooks,
-    icon = "fa-book",
-    color = Colors[1]
-  )
-})
+valueBox(
+  value = NumBooks,
+  icon = "fa-book",
+  color = Colors[1]
+)
+
 ```
 
 ### Pages read {.value-box}
@@ -150,13 +145,12 @@ renderValueBox({
 ```{r}
 NumPages <- sum(Books$Number.of.Pages)
 
-renderValueBox({
-  valueBox(
-    value = NumPages,
-    icon = "fa-file-text",
-    color = Colors[2]
-  )
-})
+valueBox(
+  value = NumPages,
+  icon = "fa-file-text",
+  color = Colors[2]
+)
+
 ```
 
 ### Average rating {.value-box}
@@ -166,13 +160,12 @@ AvgRate <- Books %>%
   summarise(AvgRating = mean(My.Rating))
 AvgRate <- AvgRate$AvgRating
 
-renderValueBox({
-  valueBox(
-    value = round(AvgRate,2),
-    icon = "fa-star",
-    color = Colors[3]
-  )
-})
+valueBox(
+  value = round(AvgRate,2),
+  icon = "fa-star",
+  color = Colors[3]
+)
+
 ```
 Row
 -----------------------------------------------------------------------
