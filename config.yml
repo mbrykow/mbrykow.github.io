@@ -18,9 +18,12 @@ menu:
         - name: Dissertation
           url: Dissertation/
           weight: 5 
-        #- name: Data
-          #url: Data/
-          #weight: 4 
+        - name: Static Dashboard
+          url: Dashboard/
+          weight: 5
+        - name: Data
+          url: Data/
+          weight: 4 
         - name: TidyTuesday
           url: TidyTuesday/
           weight: 3 
@@ -41,7 +44,7 @@ params:
     ShowBreadCrumbs: false
     ShowCodeCopyButtons: true
     ShowAllPagesInArchive: false
-    MainSections: ["CV","Dissertation","Data","TidyTuesday"]
+    MainSections: ["CV","Dissertation","Static Dashboard","Data","TidyTuesday"]
     ShowToc: false
     disableScrollToTop: true
     TocOpen: true
@@ -61,6 +64,8 @@ params:
               url: "RykowskiMB_CV.pdf"
             - name: Dissertation
               url: https://scholarship.miami.edu/esploro/outputs/doctoral/Assessing-Threats-from-Global-Warming-and/991032489071302976?institution=01UOML_INST
+            - name: Static Dashboard
+              url: "ReadingDashboard.Rmd"
             #- name: Data
               #url: Data/
             #- name: TidyTuesday
