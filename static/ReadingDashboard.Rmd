@@ -31,7 +31,7 @@ Sidebar {.sidebar}
 This is an example of a static dashboard I created in RMarkdown, using my downloaded reading data from  [Goodreads](https://www.goodreads.com). Last updated `r Sys.Date()`.
 
 Currently reading:
-![](Oathbound.jpg){#id .class width=200 height=280px}
+![](TheWomen.jpg){#id .class width=200 height=280px}
 
 
 2025
