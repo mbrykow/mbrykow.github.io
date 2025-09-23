@@ -21,6 +21,9 @@ menu:
         - name: Static Dashboard
           url: Dashboard/
           weight: 5
+        - name: Interactive Dashboard
+          url: Shiny/
+          weight: 5
         - name: Data
           url: Data/
           weight: 4 
@@ -66,6 +69,7 @@ params:
               url: https://scholarship.miami.edu/esploro/outputs/doctoral/Assessing-Threats-from-Global-Warming-and/991032489071302976?institution=01UOML_INST
             - name: Static Dashboard
               url: "ReadingDashboard.html"
+            - name: Interactive Dashboard (coming soon!)
             #- name: Data
               #url: Data/
             #- name: TidyTuesday
