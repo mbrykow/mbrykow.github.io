@@ -28,7 +28,7 @@ Sidebar {.sidebar}
 
 ### Summary
 
-This is an example of a static dashboard I created in RMarkdown, using my downloaded reading data from  [Goodreads](https://www.goodreads.com). Last updated `r Sys.Date()`.
+This is an example of a simple static dashboard I created in RMarkdown, using my downloaded reading data from  [Goodreads](https://www.goodreads.com). The purpose of this dashboard is to provide a sample of my coding skills as well as some code to view (or if you're particularly nosy, a glimpse into my reading habits too!). Last updated `r Sys.Date()`.
 
 Currently reading:
 ![](TheWomen.jpg){#id .class width=200 height=280px}
