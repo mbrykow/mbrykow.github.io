@@ -47,7 +47,7 @@ params:
     ShowBreadCrumbs: false
     ShowCodeCopyButtons: true
     ShowAllPagesInArchive: false
-    MainSections: ["CV","Dissertation","Static Dashboard","Data","TidyTuesday"]
+    MainSections: ["CV","Dissertation","Static Dashboard","Interactive Dashboard","Data","TidyTuesday"]
     ShowToc: false
     disableScrollToTop: true
     TocOpen: true
@@ -69,7 +69,8 @@ params:
               url: https://scholarship.miami.edu/esploro/outputs/doctoral/Assessing-Threats-from-Global-Warming-and/991032489071302976?institution=01UOML_INST
             - name: Static Dashboard
               url: "ReadingDashboard.html"
-            - name: Interactive Dashboard (coming soon!)
+            - name: Interactive Dashboard
+              url:  https://mbrykow.shinyapps.io/goodreadsbooks/
             #- name: Data
               #url: Data/
             #- name: TidyTuesday
