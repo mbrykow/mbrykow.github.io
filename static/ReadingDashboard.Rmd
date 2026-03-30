@@ -31,10 +31,10 @@ Sidebar {.sidebar}
 This is an example of a simple static dashboard I created in RMarkdown, using my downloaded reading data from  [Goodreads](https://www.goodreads.com). The purpose of this dashboard is to provide a sample of my coding skills as well as some code to view (or if you're particularly nosy, a glimpse into my reading habits too!). Last updated `r Sys.Date()`.
 
 Currently reading:
-![](BloodOverBrightHaven.jpg){#id .class width=200 height=280px}
+![](Atmosphere.jpg){#id .class width=200 height=280px}
 
 
-2025
+2026
 =======================================================================
 
 Row
@@ -43,16 +43,16 @@ Row
 ### Books read {.value-box}
 
 ```{r}
-Books2025 <- books %>% 
+Books2026 <- books %>% 
   filter(!grepl("to-read", Bookshelves)) %>%
-  filter(year(Date.Read) == 2025)
+  filter(year(Date.Read) == 2026)
 
-NumBooks2025 <- Books2025 %>%
+NumBooks2026 <- Books2026 %>%
   count()
-NumBooks2025 <- NumBooks2025$n
+NumBooks2026 <- NumBooks2026$n
 
 valueBox(
-  value = NumBooks2025,
+  value = NumBooks2026,
   icon = "fa-book",
   color = Colors[1]
 )
@@ -61,10 +61,10 @@ valueBox(
 ### Pages read {.value-box}
 
 ```{r}
-NumPages2025 <- sum(Books2025$Number.of.Pages)
+NumPages2026 <- sum(Books2026$Number.of.Pages)
 
 valueBox(
-  value = NumPages2025,
+  value = NumPages2026,
   icon = "fa-file-text",
   color = Colors[2]
 )
@@ -74,12 +74,12 @@ valueBox(
 ### Average rating {.value-box}
 
 ```{r}
-AvgRate2025 <- Books2025 %>%
+AvgRate2026 <- Books2026 %>%
   summarise(AvgRating = mean(My.Rating))
-AvgRate2025 <- AvgRate2025$AvgRating
+AvgRate2026 <- AvgRate2026$AvgRating
 
 valueBox(
-  value = round(AvgRate2025,2),
+  value = round(AvgRate2026,2),
   icon = "fa-star",
   color = Colors[3]
 )
@@ -91,7 +91,7 @@ Row
 ### Number of books per month
 
 ```{r}
-Books2025 %>%
+Books2026 %>%
   mutate(Month = month(Date.Read,label=T,abbr=T)) %>%
   group_by(Month) %>%
   count() %>%
@@ -104,7 +104,7 @@ Books2025 %>%
 ### Number of pages per month
 
 ```{r}
-Books2025 %>%
+Books2026 %>%
   mutate(Month = month(Date.Read,label=T,abbr=T)) %>%
   group_by(Month) %>%
   summarise(Pages = sum(Number.of.Pages)) %>%
